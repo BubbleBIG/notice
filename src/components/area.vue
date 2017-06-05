@@ -1,6 +1,6 @@
 <template>
     <div>
-    <div id="" class="">
+    <div id="" class="" align="center">
         <div class="area-contro" style=""> 
             <div>小区名字管理</div>
         </div>
@@ -8,12 +8,14 @@
             <button @click="dialog1 = true" class="btn">添 加</button>
         </div>
         <div class="area-list">
-            <div v-for="(item, index) in areaList">
-                <div class="area-common">{{ index }}</div>
-                <div class="area-common">{{ item.aname}}</div>
-                <div class="edit-btn"><button @click="editOne = Object.assign({}, item),
-                dialog2 = true" class="btn">编 辑</button></div>
-            </div>
+          <table>
+            <tr v-for="(item, index) in areaList">
+                <!--<div class="area-common">{{ index }}</div>-->
+                <td class="area-common">{{ item.aname}}</td>
+                <td class="edit-btn"><button @click="editOne = Object.assign({}, item),
+                dialog2 = true" class="btn">编 辑</button></td>
+            </tr>
+          </table>
         </div>
         <div style=" clear:both;height: 40px;"></div>
     </div>
@@ -65,7 +67,7 @@ export default {
   // name: 'hello',
   data () {
     return {
-      http: 'http://10.30.29.238',
+      http: 'http://10.30.29.184/my-project/',
       areaList: [],
       dialog1: false,
       dialog2: false,
@@ -88,10 +90,10 @@ export default {
   methods: {
     getDetail () {
       let self = this
-      let nid = self.$route.params.id
-      let formData = new FormData()
-      formData.append('nid', nid)
-    //   fetch(self.http + '/my-project/static/php/detail.php', {
+    //   let nid = self.$route.params.id
+    //   let formData = new FormData()
+    //   formData.append('nid', nid)
+    //   fetch(self.http + 'static/php/detail.php', {
     //     method: 'POST',
     //     body: formData
     //       // mode: 'no-cors',
@@ -103,8 +105,8 @@ export default {
     //     self.item = res
     //   })
       let request = new XMLHttpRequest()
-      request.open('POST', self.http + '/my-project/static/php/area.php', true) // false（同步）
-      request.send(formData)
+      request.open('POST', self.http + 'static/php/area.php', true) // false（同步）
+      request.send()
       request.onload = function () {
         if (request.status >= 200 && request.status < 400) {
           // Success!
@@ -128,7 +130,7 @@ export default {
       if (self.input1) {
         formData.append('aname', self.input1)
         let request = new XMLHttpRequest()
-        request.open('POST', self.http + '/my-project/static/php/addarea.php', true) // false（同步）
+        request.open('POST', self.http + 'static/php/addarea.php', true) // false（同步）
         request.send(formData)
         request.onload = function () {
           if (request.status >= 200 && request.status < 400) {
@@ -162,7 +164,7 @@ export default {
         formData.append('aid', e.aid)
         formData.append('aname', e.aname)
         let request = new XMLHttpRequest()
-        request.open('POST', self.http + '/my-project/static/php/editarea.php', true) // false（同步）
+        request.open('POST', self.http + 'static/php/editarea.php', true) // false（同步）
         request.send(formData)
         request.onload = function () {
           if (request.status >= 200 && request.status < 400) {
@@ -193,7 +195,7 @@ export default {
       let formData = new FormData()
       formData.append('aid', e)
       let request = new XMLHttpRequest()
-      request.open('POST', self.http + '/my-project/static/php/delarea.php', true) // false（同步）
+      request.open('POST', self.http + 'static/php/delarea.php', true) // false（同步）
       request.send(formData)
       request.onload = function () {
         if (request.status >= 200 && request.status < 400) {
@@ -231,19 +233,28 @@ export default {
 }
 .add-btn button{
     padding: 5px 0;
-    width: 80%;
+    width: 50%;
 }
 .area-list {
     padding: 10px 30px;
     font-size: 16px;
+    /*width: 50%;*/
 }
-.area-list .area-common {
-    display: inline-block;
+.area-list td {
+  width: 200px;
+  padding: 5px 8px;
+  text-align: center;
+
+}
+/*.area-list .area-common {
     padding: 8px 0;
+    float: left;
+    clear: both;
 }
 .edit-btn {
     float: right;
-}
+    margin-top: 1px;
+}*/
 .btn {
     padding: 2px 10px;
     font-size: 16px;

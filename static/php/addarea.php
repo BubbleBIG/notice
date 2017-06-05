@@ -5,7 +5,7 @@
     $data = [];
     $result3 = mysqli_query($link, "select * from `area` where aname='$aname'");
     $row = [];
-    $result3 = mysqli_fetch_array($result3);
+    $result3 = mysqli_fetch_array($result3,MYSQLI_ASSOC);
     // 重名检测
     if ($result3) {
         $data['status'] = 2;
@@ -17,7 +17,7 @@
             $result2 = mysqli_query($link, "select * from `area` where aname='$aname'");
             // 查询返回新增数据
             // $row = [];
-            $row = mysqli_fetch_array($result2);
+            $row = mysqli_fetch_array($result2,MYSQLI_ASSOC);
             $data['status'] = 1;
             $data['data'] = $row;
         }

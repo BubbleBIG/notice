@@ -27,7 +27,7 @@ export default {
   // name: 'hello',
   data () {
     return {
-      http: 'http://10.30.29.238',
+      http: 'http://10.30.29.184/my-project/',
       show: false,
       item: {
         // title: 'hhh',
@@ -48,7 +48,7 @@ export default {
       let nid = self.$route.params.id
       let formData = new FormData()
       formData.append('nid', nid)
-    //   fetch(self.http + '/my-project/static/php/detail.php', {
+    //   fetch(self.http + 'static/php/detail.php', {
     //     method: 'POST',
     //     body: formData
     //       // mode: 'no-cors',
@@ -60,7 +60,7 @@ export default {
     //     self.item = res
     //   })
     //   let request = new XMLHttpRequest()
-    //   request.open('POST', self.http + '/my-project/static/php/admin.php', true) // false（同步）
+    //   request.open('POST', self.http + 'static/php/admin.php', true) // false（同步）
     //   request.send(formData)
     //   request.onload = function () {
     //     if (request.status >= 200 && request.status < 400) {

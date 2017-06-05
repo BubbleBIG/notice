@@ -6,7 +6,7 @@
     $result = mysqli_query($link, "select * from area_notices where aid=$aid and nid<$nid limit 10");
     $i = 0;
     $data = [];
-    while($row = mysqli_fetch_array($result)){
+    while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
         $data[$i] = $row;
         $i += 1;
     }

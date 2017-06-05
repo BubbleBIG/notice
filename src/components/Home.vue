@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home">
     <nav class="nav">
       <div class="navb title">选择小区</div>
       <div class="navb select"><select id="select" v-model="select">
@@ -25,7 +25,7 @@ export default {
   // name: 'hello',
   data () {
     return {
-      http: 'http://10.30.29.238',
+      http: 'http://10.30.29.184/my-project/',
       select: '',
       options: [],
       showNotice: [],
@@ -42,7 +42,7 @@ export default {
   methods: {
     getArea () {
       let self = this
-      // axios.post('http://localhost/my-project/static/php/area.php', {
+      // axios.post('http://localhoststatic/php/area.php', {
       // })
       // .then(res => res.json())
       // .then(function (res) {
@@ -54,7 +54,7 @@ export default {
       //   console.log(err)
       // })
       let request = new XMLHttpRequest()
-      request.open('GET', self.http + '/my-project/static/php/area.php', true) // false（同步）
+      request.open('GET', self.http + 'static/php/area.php', true) // false（同步）
       request.send()
       request.onload = function () {
         if (request.status >= 200 && request.status < 400) {
@@ -91,7 +91,7 @@ export default {
         // self.select = 1
         formData.append('aid', self.select)
         let request = new XMLHttpRequest()
-        request.open('POST', self.http + '/my-project/static/php/notice.php', true) // false（同步）
+        request.open('POST', self.http + 'static/php/notice.php', true) // false（同步）
         request.send(formData)
         request.onload = function () {
           if (request.status >= 200 && request.status < 400) {
@@ -123,7 +123,7 @@ export default {
       formData.append('aid', self.select)
       formData.append('nid', e)
       let request = new XMLHttpRequest()
-      request.open('POST', self.http + '/my-project/static/php/getmore.php', true) // false（同步）
+      request.open('POST', self.http + 'static/php/getmore.php', true) // false（同步）
       request.send(formData)
       request.onload = function () {
         if (request.status >= 200 && request.status < 400) {
@@ -160,6 +160,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.home {
+  background: #eee;
+}
 .nav {
   width: 100%;
   position: fixed;

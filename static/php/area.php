@@ -5,7 +5,7 @@
     // $row = mysqli_fetch_array($result);
     $i = 0;
     $data = [];
-    while($row = mysqli_fetch_array($result)){
+    while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
         $data[$i] = $row;
         $i += 1;
     }

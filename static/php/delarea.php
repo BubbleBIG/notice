@@ -14,7 +14,7 @@
         // 删除成功则，查询返回新数据
         $row2 = [];
         $i = 0;
-        while($row = mysqli_fetch_array($result2)){
+        while($row = mysqli_fetch_array($result2,MYSQLI_ASSOC)){
             $row2[$i] = $row;
             $i += 1;
         }
